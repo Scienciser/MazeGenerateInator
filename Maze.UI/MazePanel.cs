@@ -91,7 +91,7 @@ internal class MazePanel : Panel
         // Half the time create a large maze, the other half create a small maze
         bool bigMaze = rng.Next(0, 2) == 0;
         var width = bigMaze ? rng.Next(50, 150) : rng.Next(15, 30);
-        var height = (int)((float)Height / Width * width); // Keep the maze cell aspect ratio 1:1
+        var height = Math.Max((int)((float)Height / Width * width), 1); // Keep the maze cell aspect ratio 1:1
         _solved = false;
         _navigation = false;
         return new MazeGenerator(width, height);
